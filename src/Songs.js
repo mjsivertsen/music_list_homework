@@ -1,6 +1,7 @@
 import React from "react";
 import Song from "./Song";
 import {Table} from "semantic-ui-react";
+import styled from "styled-components";
 
 
 const Songs = ( {songs, deleteSong, updateSong} ) => (
@@ -20,5 +21,6 @@ const Songs = ( {songs, deleteSong, updateSong} ) => (
       </Table.Body>
       </Table>
     );
+
 
 export default Songs;

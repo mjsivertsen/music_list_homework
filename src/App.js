@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Songs from "./Songs";
 import SongForm from "./SongForm";
-import { Container, Header } from "semantic-ui-react";
+import { Container, Header, Icon } from "semantic-ui-react";
+import styled, {keyframes} from "styled-components";
+import axios from "axios";
+import WebFont from "webfontloader";
 
 
 class App extends Component {
@@ -15,6 +18,14 @@ class App extends Component {
       {id: 6, song: "Murder at the Bingo Hall", artist: "Amigo the Devil" },
     ],
   }
+  
+
+  componentWillMount() {
+    WebFont.load({
+      google: {
+        families: ['Architects Daughter']
+  }})};
+
   componentDidMount() {
     console.log("The Component Hath Mounted")
   }
@@ -45,13 +56,50 @@ class App extends Component {
   
   render () {
     return (
-      <Container style={{paddingTop: "26px"}}>
-      <Header as="h1"> Music List - React Homework </Header>
+      <AppContainer style={{paddingTop: "26px"}}>
+      <SuperHeader> 
+        <Music>
+          <Icon size="large" name="music" />
+        </Music>
+        Music List - React Homework 
+        <Music>
+          <Icon size="large" name="music" />
+        </Music>
+      </SuperHeader>
       <Songs songs={this.state.songs} deleteSong={this.deleteSong} updateSong={this.updateSong}/>
       <SongForm addSong={this.addSong}/>
-      </Container>
+      </AppContainer>
       );
   };
 };
+
+const AppContainer = styled.div`
+padding: 66px;
+min-height: 100vh; 
+background: rgb(0,71,62);
+background: linear-gradient(90deg, rgba(0,71,62,1) 0%, rgba(0,64,82,1) 50%, rgba(9,0,55,1) 100%);
+`;
+
+const SuperHeader = styled.div`
+color: teal;
+font-family: Architects Daughter;
+font-size: 36px;
+`;
+
+const bounce = keyframes`
+0%, 50%, 100%  {transform: translate(0,0);}
+25% {transform: translate(3px, -6px);}
+75% {transform: translate(-3px, -6px);}
+`;
+
+const Music = styled.div`
+fontsize: 26px;
+display: inline-block;
+animation: ${bounce} .5s linear;
+animation-iteration-count: 2;
+`;
+
+<i class="music icon"></i>
+
 
 export default App;
