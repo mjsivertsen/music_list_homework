@@ -25,8 +25,9 @@ class SongForm extends React.Component {
       this.props.toggleEdit();
     }
     else {
-    this.props.addSong(this.state);
+    this.props.addSong({id: Math.random(), ...this.state});
     this.setState({song: "", artist: "",})
+    console.log(this.state)
   }
 }
 
@@ -63,7 +64,7 @@ class SongForm extends React.Component {
           </Form.Group>
           </Card.Content>
           <Card.Content extra>
-        <Button style={FunButton} type="submit">{this.props.id ? "Update Song" : "Add Song"}</Button>
+        <FunButton>{this.props.id ? "Update Song" : "Add Song"}</FunButton>
           </Card.Content>
         </Form>
         </FormCard>
@@ -74,9 +75,14 @@ class SongForm extends React.Component {
 }
 
 const bounce = keyframes`
-0% {margin-bottom: 0;}
-50% {margin-bottom: 6px;}
-100% {margin-bottom: 0;}
+0%, 50%, 100%  {transform: translate(0,0);}
+25% {transform: translate(3px, -6px);}
+75% {transform: translate(-3px, -6px);}
+`;
+
+const flash = keyframes`
+0%, 50%, 100% {opacity: 0}
+25%, 75% {opacity: 1}
 `;
 
 const FormCard = styled.div`
@@ -89,18 +95,22 @@ font-family: Architects Daughter;
 border-radius: 6px;
 box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
 border: 2px solid #191970;
-animation: ${bounce} 0.5s linear;
 `;
 
-const FunButton = 
-{backgroundColor: "#00ff7f",
-padding: "6px",
-borderRadius: "6px",
-width: "88px",
-color: "#191970",
-fontFamily: "Architects Daughter",
-border: "2px solid #191970",
-boxShadow: "rgba(0, .2, .3, .6) 0px 6px 12px;"}
+const FunButton = styled.button`
+background-color: #00ff7f;
+padding: 6px;
+border-radius: 6px;
+width: 88px;
+color: #191970;
+font-family: Architects Daughter;
+border: 2px solid #191970;
+box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
+
+&:hover {
+  animation: ${flash} 1s infinite;
+}
+`;
 
 const FunInput = 
 {fontFamily: "Architects Daughter",

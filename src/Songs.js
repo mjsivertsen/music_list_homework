@@ -5,22 +5,27 @@ import styled from "styled-components";
 
 
 const Songs = ( {songs, deleteSong, updateSong} ) => (
-      <Table celled padded>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Song Title</Table.HeaderCell>
-            <Table.HeaderCell>Artist</Table.HeaderCell>
-            <Table.HeaderCell>Stuff</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <StyleTable celled padded>
+        <StyleTable.Header>
+          <StyleTable.Row>
+            <StyleTable.HeaderCell>Song Title</StyleTable.HeaderCell>
+            <StyleTable.HeaderCell>Artist</StyleTable.HeaderCell>
+            <StyleTable.HeaderCell>Stuff</StyleTable.HeaderCell>
+          </StyleTable.Row>
+        </StyleTable.Header>
 
-      <Table.Body>
+      <StyleTable.Body>
         {songs.map((song) => (
-          <Song {...song} deleteSong={deleteSong} updateSong={updateSong}/>
+          <Song {...song} StyleTable={StyleTable} deleteSong={deleteSong} updateSong={updateSong}/>
         ))}
-      </Table.Body>
-      </Table>
+      </StyleTable.Body>
+      </StyleTable>
     );
+
+    const StyleTable = styled(Table)`
+    font-family: Architects Daughter;
+    background-color: 
+    `
 
 
 export default Songs;

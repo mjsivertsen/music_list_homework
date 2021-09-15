@@ -66,12 +66,13 @@ class App extends Component {
           <Icon size="large" name="music" />
         </Music>
       </SuperHeader>
-      <Songs songs={this.state.songs} deleteSong={this.deleteSong} updateSong={this.updateSong}/>
+      <Songs songs={this.state.songs} deleteSong={this.deleteSong} updateSong={this.updateSong} />
       <SongForm addSong={this.addSong}/>
       </AppContainer>
       );
   };
 };
+
 
 const AppContainer = styled.div`
 padding: 66px;
@@ -93,9 +94,11 @@ const bounce = keyframes`
 `;
 
 const Music = styled.div`
+color:  #191970;
+margin: 6px;
 fontsize: 26px;
 display: inline-block;
-animation: ${bounce} .5s linear;
+animation: ${bounce} .8s linear;
 animation-iteration-count: 2;
 `;
 

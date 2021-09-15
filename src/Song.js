@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button, Card } from "semantic-ui-react"
 import SongForm from "./SongForm"
-import { keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 class Song extends React.Component {
  state = { showForm: false};
@@ -17,13 +17,13 @@ class Song extends React.Component {
           <SongForm
           toggleEdit={this.toggleEdit} 
           updateSong={this.props.updateSong}
+          
           {...this.props} />
 
-          <Button 
-          style={FunCancelButton}
+          <FunCancelButton
           onClick={this.toggleEdit}>
             Cancel Edit
-          </Button>
+          </FunCancelButton>
         </>
       );
     };
@@ -36,17 +36,15 @@ class Song extends React.Component {
         <Table.Cell>{this.props.artist}</Table.Cell>
         <Table.Cell>
 
-          <Button 
-          style={FunEditButton}
+          <FunEditButton
           onClick={this.toggleEdit}>
           Edit
-          </Button>
+          </FunEditButton>
 
-          <Button 
-          style={FunDeleteButton}
+          <FunDeleteButton
           onClick={() => this.props.deleteSong(this.props.id)}>
           Delete
-          </Button>
+          </FunDeleteButton>
 
         </Table.Cell>
       </Table.Row>
@@ -54,41 +52,62 @@ class Song extends React.Component {
   }
 }
 
-const bounce = keyframes`
-0% {margin-bottom: 0;}
-50% {margin-bottom: 6px;}
-100% {margin-bottom: 0;}
+// const Table = styled(Table)`
+// background: blue;
+// `
+
+const flash = keyframes`
+0%, 50%, 100% {opacity: 0}
+25%, 75% {opacity: 1}
 `;
 
-const FunEditButton = 
-{backgroundColor: "#fd581e",
-padding: "6px",
-borderRadius: "6px",
-width: "88px",
-color: "#fff44f",
-fontFamily: "Architects Daughter",
-border: "2px solid #191970",
-boxShadow: "rgba(0, .2, .3, .6) 0px 6px 12px;",
+const FunEditButton = styled.button`
+{background-color: #fd581e;
+padding: 6px;
+border-radius: 6px;
+width: 88px;
+color: #fff44f;
+font-family: Architects Daughter;
+border: 2px solid #191970;
+box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
+
+&:hover {
+  animation: ${flash} 1s infinite;
 }
+`;
 
-const FunCancelButton = 
-{backgroundColor: "#fd581e",
-padding: "6px",
-borderRadius: "6px",
-width: "88px",
-color: "#fff44f",
-fontFamily: "Architects Daughter",
-border: "2px solid #191970",
-boxShadow: "rgba(0, .2, .3, .6) 0px 6px 12px;"}
 
-const FunDeleteButton = 
-{backgroundColor: "#660000",
-padding: "6px",
-borderRadius: "6px",
-width: "88px",
-color: "#ff00ff",
-fontFamily: "Architects Daughter",
-border: "2px solid #191970",
-boxShadow: "rgba(0, .2, .3, .6) 0px 6px 12px;"}
+const FunCancelButton = styled.button`
+{background-color: #fd581e;
+padding: 6px;
+border-radius: 6px;
+width: 88px;
+color: #fff44f;
+font-family: Architects Daughter;
+border: 2px solid #191970;
+box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
+
+&:hover {
+  animation: ${flash} 1s infinite;
+}
+`;
+
+
+const FunDeleteButton = styled.button`
+{background-color: #660000;
+padding: 6px;
+border-radius: 6px;
+width: 88px;
+color: #ff00ff;
+font-family: Architects Daughter;
+border: 2px solid #191970;
+box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
+
+&:hover {
+  animation: ${flash} 1s infinite;
+}
+`;
+
+
 
 export default Song;
