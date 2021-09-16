@@ -9,7 +9,7 @@ class SongForm extends React.Component {
   state = {
     song: this.props.song ? this.props.song: "",
     artist: this.props.artist ? this.props.artist: "",
-  }
+  } 
 
   componentWillMount() {
     WebFont.load({
@@ -34,8 +34,8 @@ class SongForm extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value,});
   };
-  
-  render () {
+
+  render() {
     return(
       <div>
       <Container  style={{margin: "20px"}}>
@@ -64,7 +64,7 @@ class SongForm extends React.Component {
           </Form.Group>
           </Card.Content>
           <Card.Content extra>
-        <FunButton>{this.props.id ? "Update Song" : "Add Song"}</FunButton>
+          <FunButton>{this.props.id ? "Update Song" : "Add Song"}</FunButton>
           </Card.Content>
         </Form>
         </FormCard>
@@ -74,11 +74,6 @@ class SongForm extends React.Component {
   }
 }
 
-const bounce = keyframes`
-0%, 50%, 100%  {transform: translate(0,0);}
-25% {transform: translate(3px, -6px);}
-75% {transform: translate(-3px, -6px);}
-`;
 
 const flash = keyframes`
 0%, 50%, 100% {opacity: 0}
@@ -98,6 +93,7 @@ border: 2px solid #191970;
 `;
 
 const FunButton = styled.button`
+margin: 6px;
 background-color: #00ff7f;
 padding: 6px;
 border-radius: 6px;
@@ -112,8 +108,8 @@ box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
 }
 `;
 
-const FunInput = 
-{fontFamily: "Architects Daughter",
+const FunInput = {
+fontFamily: "Architects Daughter",
 border: "2px solid #191970",
 borderRadius: "6px",
 }

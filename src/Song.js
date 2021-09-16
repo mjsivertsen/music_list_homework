@@ -1,10 +1,11 @@
 import React from "react";
-import { Table, Button, Card } from "semantic-ui-react"
+import { Card, Grid } from "semantic-ui-react"
 import SongForm from "./SongForm"
 import styled, { keyframes } from "styled-components";
 
 class Song extends React.Component {
  state = { showForm: false};
+
  toggleEdit = () => {
   this.setState({
     showForm: !this.state.showForm,
@@ -14,16 +15,19 @@ class Song extends React.Component {
     if (this.state.showForm) {
       return (
         <>
-          <SongForm
-          toggleEdit={this.toggleEdit} 
-          updateSong={this.props.updateSong}
-          
-          {...this.props} />
+          <Organize>
 
-          <FunCancelButton
-          onClick={this.toggleEdit}>
+            <SongForm
+            toggleEdit={this.toggleEdit} 
+            updateSong={this.props.updateSong}
+            showForm={this.state.showForm}
+            {...this.props} />
+
+            <FunCancelButton onClick={this.toggleEdit}>
             Cancel Edit
-          </FunCancelButton>
+            </FunCancelButton>
+
+          </Organize>
         </>
       );
     };
@@ -31,30 +35,40 @@ class Song extends React.Component {
 
 
     return (
-      <Table.Row key={this.props.id}>
-        <Table.Cell static>{this.props.song}</Table.Cell>
-        <Table.Cell>{this.props.artist}</Table.Cell>
-        <Table.Cell>
+        <StyledCard key={this.props.id}>
+          <StyledCard.Content>
+          <StyledCard.Header>{this.props.song}</StyledCard.Header>
+          <StyledCard.Meta>{this.props.artist}</StyledCard.Meta>
+          </StyledCard.Content>
+          <StyledCard.Content extra>
 
-          <FunEditButton
-          onClick={this.toggleEdit}>
-          Edit
-          </FunEditButton>
+            <FunEditButton
+            onClick={this.toggleEdit}>
+            Edit
+            </FunEditButton>
 
-          <FunDeleteButton
-          onClick={() => this.props.deleteSong(this.props.id)}>
-          Delete
-          </FunDeleteButton>
+            <FunDeleteButton
+            onClick={() => this.props.deleteSong(this.props.id)}>
+            Delete
+            </FunDeleteButton>
 
-        </Table.Cell>
-      </Table.Row>
+          </StyledCard.Content>
+        </StyledCard>
     )
   }
 }
 
-// const Table = styled(Table)`
-// background: blue;
-// `
+const Organize = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+`;
+
+
+const StyledCard = styled(Card)`
+font-family: Architects Daughter;
+border: 2px solid #191970;
+`;
 
 const flash = keyframes`
 0%, 50%, 100% {opacity: 0}
@@ -63,6 +77,7 @@ const flash = keyframes`
 
 const FunEditButton = styled.button`
 {background-color: #fd581e;
+margin: 6px;
 padding: 6px;
 border-radius: 6px;
 width: 88px;
@@ -75,10 +90,10 @@ box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
   animation: ${flash} 1s infinite;
 }
 `;
-
 
 const FunCancelButton = styled.button`
 {background-color: #fd581e;
+margin: 6px;
 padding: 6px;
 border-radius: 6px;
 width: 88px;
@@ -86,15 +101,16 @@ color: #fff44f;
 font-family: Architects Daughter;
 border: 2px solid #191970;
 box-shadow: rgba(0, .2, .3, .6) 0px 6px 12px;
+float: right;
 
 &:hover {
   animation: ${flash} 1s infinite;
 }
 `;
 
-
 const FunDeleteButton = styled.button`
 {background-color: #660000;
+margin: 6px;
 padding: 6px;
 border-radius: 6px;
 width: 88px;

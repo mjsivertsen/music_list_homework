@@ -5,22 +5,24 @@ import { Container, Header, Icon } from "semantic-ui-react";
 import styled, {keyframes} from "styled-components";
 import axios from "axios";
 import WebFont from "webfontloader";
+import { screensize } from "./query";
 
 
 class App extends Component {
   state = {
     songs: [
-      {id: 1, song: "Mirror Reaper", artist: "Bell Witch"},
-      {id: 2, song: "Santa Monica", artist: "Honus Honus"},
-      {id: 3, song: "Trekka", artist: "Puscifer"},
-      {id: 4, song: "Say It Isn't So", artist: "Julie London"},
-      {id: 5, song: "Borderlands", artist: "Devin Townsend"},
-      {id: 6, song: "Murder at the Bingo Hall", artist: "Amigo the Devil" },
+      {id: 1, song: "Mirror Reaper", artist: "Bell Witch", time: "83.15"},
+      {id: 2, song: "Santa Monica", artist: "Honus Honus", time: "3:11"},
+      {id: 3, song: "Trekka", artist: "Puscifer", time: "4:43"},
+      {id: 4, song: "Say It Isn't So", artist: "Julie London", time: "2:02"},
+      {id: 5, song: "Borderlands", artist: "Devin Townsend", time: "11:02"},
+      {id: 6, song: "Murder at the Bingo Hall", artist: "Amigo the Devil", time: "3:21"},
     ],
   }
   
 
   componentWillMount() {
+    alert("Flexbox and media queries make me sad.")
     WebFont.load({
       google: {
         families: ['Architects Daughter']
@@ -85,6 +87,12 @@ const SuperHeader = styled.div`
 color: teal;
 font-family: Architects Daughter;
 font-size: 36px;
+@media ${screensize.medium} {
+  font-size: 24px;
+}
+@media ${screensize.small} {
+  font-size: 12px;
+}
 `;
 
 const bounce = keyframes`
@@ -95,11 +103,18 @@ const bounce = keyframes`
 
 const Music = styled.div`
 color:  #191970;
-margin: 6px;
-fontsize: 26px;
+margin-right: 6px;
+margin-bottom: 18px;
 display: inline-block;
 animation: ${bounce} .8s linear;
 animation-iteration-count: 2;
+font-size: 36px;
+@media ${screensize.medium} {
+  font-size: 24px;
+}
+@media ${screensize.small} {
+  font-size: 12px;
+}
 `;
 
 <i class="music icon"></i>
