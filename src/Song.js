@@ -37,7 +37,7 @@ class Song extends React.Component {
     return (
         <StyledCard key={this.props.id}>
           <StyledCard.Content>
-          <StyledCard.Header>{this.props.song}</StyledCard.Header>
+          <StyledCard.Header style={changeFontDangit}>{this.props.song}</StyledCard.Header>
           <StyledCard.Meta>{this.props.artist}</StyledCard.Meta>
           </StyledCard.Content>
           <StyledCard.Content extra>
@@ -64,6 +64,9 @@ flex-direction: column;
 justify-content: center;
 `;
 
+const changeFontDangit = {
+fontFamily: "Architects Daughter"
+}
 
 const StyledCard = styled(Card)`
 font-family: Architects Daughter;

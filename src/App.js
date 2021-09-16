@@ -22,7 +22,7 @@ class App extends Component {
   
 
   componentWillMount() {
-    alert("Flexbox and media queries make me sad.")
+    alert("Warning:  My styling is obnoxious.")
     WebFont.load({
       google: {
         families: ['Architects Daughter']
@@ -81,6 +81,7 @@ padding: 66px;
 min-height: 100vh; 
 background: rgb(0,71,62);
 background: linear-gradient(90deg, rgba(0,71,62,1) 0%, rgba(0,64,82,1) 50%, rgba(9,0,55,1) 100%);
+font-family: Architects Daughter;
 `;
 
 const SuperHeader = styled.div`
@@ -106,8 +107,7 @@ color:  #191970;
 margin-right: 6px;
 margin-bottom: 18px;
 display: inline-block;
-animation: ${bounce} .8s linear;
-animation-iteration-count: 2;
+animation: ${bounce} 1s infinite;
 font-size: 36px;
 @media ${screensize.medium} {
   font-size: 24px;
